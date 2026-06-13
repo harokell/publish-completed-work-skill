@@ -1,0 +1,12 @@
+interface:
+  display_name: "Publish Completed Work"
+  short_description: "Sync completed skills and projects to GitHub"
+  default_prompt: "Use $publish-completed-work after completing this skill or project to publish or sync it to GitHub."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "github"
+      description: "GitHub repository creation, file sync, commits, and verification"
+      transport: "streamable_http"
+      url: "https://api.githubcopilot.com/mcp/"
