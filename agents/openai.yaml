@@ -1,7 +1,7 @@
 interface:
   display_name: "Publish Completed Work"
-  short_description: "Sync completed skills and projects to GitHub"
-  default_prompt: "Use $publish-completed-work after completing this skill or project to publish or sync it to GitHub."
+  short_description: "Sync user-approved skills and projects to GitHub"
+  default_prompt: "Use $publish-completed-work after the user confirms this completed skill or project version is acceptable, then publish or sync it to GitHub."
 
 dependencies:
   tools:
