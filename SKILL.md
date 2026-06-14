@@ -74,6 +74,19 @@ When publishing a skill that was built locally for a specific agent platform, pr
 
 The public README may mention a specific agent platform only as an optional compatibility note when useful. It must not make that platform the only supported use path.
 
+## Repository Metadata Gate
+
+For public skill repositories, set and verify the GitHub repository About/description metadata as part of publication.
+
+Before publishing or updating a public skill repository:
+
+- Set a concise, platform-neutral repository description.
+- Do not use descriptions such as "<platform> skill ..." or any wording that makes the public package sound tied to one agent platform.
+- Prefer descriptions such as "Generic workflow for ..." or "Reusable AI-agent workflow for ...".
+- Verify the rendered GitHub About section or repository page title after saving metadata.
+
+Repository metadata is separate from files such as `README.md` and `SKILL.md`; updating the files is not enough.
+
 ## README Quality Gate
 
 Every published public skill repository must include a non-empty `README.md`.
@@ -109,7 +122,8 @@ For project repositories, use the same rule when the repository is public or mea
 9. Commit with a concise message describing the completed work or update.
 10. Push or write the repository update.
 11. Verify the remote files after publishing, including `README.md` and `SKILL.md` for skill repositories.
-12. Report the repository URL and validation status in the final response.
+12. Verify the GitHub About/description metadata for public skill repositories.
+13. Report the repository URL and validation status in the final response.
 
 ## Update Workflow
 
@@ -152,6 +166,7 @@ Include:
 - What was published or synchronized.
 - Validation checks performed.
 - For skills, whether the published package is generic and README-backed.
+- For public skill repositories, whether the GitHub About/description is platform-neutral.
 - Any files intentionally excluded for safety.
 
 If the current version has not been confirmed yet, do not include a GitHub publication result. Instead, state that the local work is ready for review and that GitHub sync will happen after the user confirms this version is acceptable.
