@@ -1,15 +1,18 @@
 # Publish Completed Work Skill
 
-Publish Completed Work is a reusable workflow for AI agents and maintainers who want completed skills or projects to be preserved in GitHub only after the user has accepted the current version.
+Publish Completed Work is a reusable workflow for publishing or synchronizing user-approved skills and completed projects to GitHub.
 
 ## What It Solves
 
-This skill prevents two common release mistakes:
+It prevents premature publishing and keeps repositories organized:
 
-- publishing a skill or project before the user has confirmed that the current version is acceptable,
-- publishing a local, platform-specific skill folder as if it were a general-purpose public package.
+- publish only after the user confirms the current version is acceptable,
+- update existing repositories instead of creating duplicates,
+- use `-skill` repository names for skill packages,
+- publish only generic, README-backed skill packages,
+- verify remote files and repository descriptions after syncing.
 
-It also requires public skill repositories to include a useful README instead of an empty or platform-only placeholder.
+For skill repositories, run `prepare-generic-skill` first so the published package is platform-neutral and safe to share.
 
 ## Package Contents
 
@@ -23,18 +26,20 @@ There are no required scripts, assets, or external dependencies.
 
 ## How To Use
 
-Give `SKILL.md` to an AI agent or maintainer as the publication checklist for completed skill and project work.
+Give `SKILL.md` to an AI agent after a skill or project has been completed and the user has explicitly confirmed that version should be published or synchronized.
 
-Run the workflow only after:
+The agent should:
 
-1. the skill or project has been completed and validated, and
-2. the user explicitly confirms that this version is acceptable or asks for GitHub publication.
-
-For skills, publish a generic package that a person can understand after downloading the repository. Do not publish local platform metadata by default.
+1. verify that user confirmation is present,
+2. for skills, confirm a generic package has already been prepared,
+3. determine whether the target GitHub repository exists,
+4. create or update the correct repository,
+5. exclude local-only files, caches, credentials, and adapter metadata,
+6. verify remote files and repository description after publication.
 
 ## Safety Notes
 
-- Never publish secrets, tokens, credentials, cookies, private keys, `.env` files, or unrelated user files.
-- Do not create duplicate repositories for later updates; sync the existing repository.
-- Do not publish an empty README or a README that only describes one agent platform's installation path.
-- Keep platform-specific adapters separate from the main package unless the user explicitly asks to include them.
+- Never publish secrets, credentials, tokens, environment files, cookies, private keys, or private runtime state.
+- Never infer publication approval from silence or successful local validation.
+- For public skill repositories, keep the README, skill instructions, and repository About text platform-neutral.
+- For updates, preserve the existing repository unless the user requests a rename or transfer.
